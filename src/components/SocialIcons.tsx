@@ -7,7 +7,7 @@ import { TbNotes } from "react-icons/tb";
 import { useEffect } from "react";
 import HoverLinks from "./HoverLinks";
 
-const RESUME_FILE = "/resume/Harsh_Wasnik_Resume.pdf";
+const RESUME_FILE = "/resume/Harsh_Wasnik.pdf";
 
 const SocialIcons = () => {
   useEffect(() => {

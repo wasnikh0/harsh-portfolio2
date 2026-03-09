@@ -51,7 +51,7 @@ npm run preview
 
 The resume button points to:
 
-`/public/resume/Harsh_Wasnik_Resume.pdf`
+`/public/resume/Harsh_Wasnik.pdf`
 
 Place your PDF at that path so users can download it directly from the site.
 
