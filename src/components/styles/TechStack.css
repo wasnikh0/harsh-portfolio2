@@ -1,0 +1,70 @@
+.techstack h2 {
+  top: 24px;
+  z-index: 60;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.techstack-overlay {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  top: 190px;
+  width: 100%;
+  pointer-events: none;
+}
+
+.techstack-pill-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.techstack-pill {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(234, 229, 236, 0.95);
+  background: rgba(10, 14, 23, 0.65);
+  border: 1px solid rgba(94, 234, 212, 0.35);
+  backdrop-filter: blur(5px);
+}
+
+.techstack-pill strong {
+  color: var(--accentColor);
+  font-weight: 600;
+}
+
+@media screen and (max-width: 1200px) {
+  .techstack h2 {
+    top: 18px;
+  }
+
+  .techstack-overlay {
+    top: 158px;
+  }
+
+  .techstack-pill {
+    font-size: 12px;
+    padding: 9px 12px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .techstack h2 {
+    top: 12px;
+  }
+
+  .techstack-overlay {
+    top: 132px;
+  }
+
+  .techstack-pill-grid {
+    grid-template-columns: 1fr;
+  }
+}

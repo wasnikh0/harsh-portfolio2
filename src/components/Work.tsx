@@ -1,38 +1,46 @@
 import { useState, useCallback } from "react";
 import "./styles/Work.css";
-import WorkImage from "./WorkImage";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 
 const projects = [
   {
-    title: "Solid Starters",
-    category: "Low-Code Platform",
-    tools: "Angular, Next.js, NestJS, MongoDB",
-    image: "/images/Solidx.png",
+    title: "Network Security MLOps Pipeline",
+    emoji: "🛡️",
+    category: "MLOps & Cybersecurity",
+    tools: "Python, MLflow, Docker, AWS EC2/ECR, GitHub Actions, DagsHub",
+    gradient: "linear-gradient(135deg, #0f766e 0%, #115e59 50%, #134e4a 100%)",
+    highlights: [
+      "End-to-end MLOps pipeline for real-time phishing detection",
+      "Modular architecture with YAML configs & CI/CD via GitHub Actions",
+      "Dockerized & deployed to AWS EC2 using ECR",
+      "Compared Random Forest, AdaBoost, Gradient Boosting, Logistic Regression & Decision Trees",
+    ],
   },
   {
-    title: "Radix",
-    category: "E-Commerce",
-    tools: "Angular, Next.js, NestJS, CMS",
-    image: "/images/radix.png",
+    title: "AI-Powered Risk Predictor",
+    emoji: "🔐",
+    category: "Healthcare AI & NLP",
+    tools: "Databricks Spark, LLMs, Knowledge Graphs, EHR Data",
+    gradient: "linear-gradient(135deg, #7c3aed 0%, #6d28d9 50%, #4c1d95 100%)",
+    highlights: [
+      "HIPAA-compliant patient-specific treatment recommendations",
+      "Integrated EHR, clinical notes & medication data",
+      "Achieved 90% accuracy in diagnosis prediction",
+      "Built with Databricks Spark & Knowledge Graphs",
+    ],
   },
   {
-    title: "Bond Cancellation",
-    category: "Import-Export Automation",
-    tools: "Angular, Next.js, NestJS, Workflows",
-    image: "/images/bond.png",
-  },
-  {
-    title: "Sapphire",
-    category: "CRM Platform",
-    tools: "AngularJS, NestJS, PostgreSQL",
-    image: "/images/sapphire.png",
-  },
-  {
-    title: "Mpro",
-    category: "Insurance Platform",
-    tools: "React.js, Node.js, Microservices",
-    image: "/images/Maxlife.png",
+    title: "Adaptive Learning with GPT + KGs",
+    emoji: "📚",
+    category: "EdTech & GenAI · Published at IEEE ICCPCT 2025",
+    tools: "GPT-4, Semantic Knowledge Graphs, Python, NLP",
+    gradient: "linear-gradient(135deg, #0369a1 0%, #075985 50%, #0c4a6e 100%)",
+    highlights: [
+      "Integrated GPT-4 with semantic knowledge graphs",
+      "Personalised learning paths for students",
+      "Improved student engagement by 25%, retention by 18%",
+      "Published at IEEE ICCPCT 2025",
+    ],
   },
 ];
 
@@ -109,13 +117,25 @@ const Work = () => {
                           {project.category}
                         </p>
                         <div className="carousel-tools">
-                          <span className="tools-label">Tools & Features</span>
+                          <span className="tools-label">Tools & Tech</span>
                           <p>{project.tools}</p>
                         </div>
                       </div>
                     </div>
                     <div className="carousel-image-wrapper">
-                      <WorkImage image={project.image} alt={project.title} />
+                      <div
+                        className="project-card-visual"
+                        style={{ background: project.gradient }}
+                      >
+                        <span className="project-card-emoji">
+                          {project.emoji}
+                        </span>
+                        <ul className="project-card-highlights">
+                          {project.highlights.map((h, i) => (
+                            <li key={i}>{h}</li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -25,6 +25,11 @@
   opacity: 0.6;
 }
 
+/* contact-specific color custom property */
+:root {
+  --contactLinkColor: #ff5722;
+}
+
 .contact-box {
   display: flex;
   flex-direction: column;
@@ -37,7 +42,8 @@
 
 a.contact-social {
   font-size: 25px;
-  border-bottom: 1px solid #ccc;
+  color: var(--contactLinkColor);
+  border-bottom: 1px solid var(--contactLinkColor);
 }
 
 .contact-box h2 {

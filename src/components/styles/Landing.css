@@ -192,6 +192,20 @@
   font-family: "Geist", sans-serif;
 }
 
+.landing-tagline {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+.landing-tagline {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 300;
+  opacity: 0.8;
+}
+
 /* .landing-intro h1 span {
    font-weight: 200; 
 } */

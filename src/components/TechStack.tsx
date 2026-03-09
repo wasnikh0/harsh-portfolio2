@@ -10,25 +10,105 @@ import {
   CylinderCollider,
   RapierRigidBody,
 } from "@react-three/rapier";
+import "./styles/TechStack.css";
 
-const textureLoader = new THREE.TextureLoader();
-const imageUrls = [
-  "/images/react2.webp",
-  "/images/next2.webp",
-  "/images/node2.webp",
-  "/images/express.webp",
-  "/images/mongo.webp",
-  "/images/mysql.webp",
-  "/images/typescript.webp",
-  "/images/javascript.webp",
+const sphereLabels = [
+  "Python",
+  "PyTorch",
+  "TensorFlow",
+  "Scikit",
+  "XGBoost",
+  "Airflow",
+  "MLflow",
+  "Docker",
+  "LangChain",
+  "PySpark",
+  "PostgreSQL",
+  "MongoDB",
+  "Snowflake",
+  "Redshift",
+  "AWS",
+  "SageMaker",
+  "Lambda",
+  "GCP",
+  "Azure",
+  "Power BI",
+  "Tableau",
+  "Plotly",
+  "Seaborn",
+  "Matplotlib",
+  "Streamlit",
+  "HuggingFace",
+  "R",
+  "Bash",
 ];
-const textures = imageUrls.map((url) => textureLoader.load(url));
+
+function createLabelTexture(label: string, index: number) {
+  const canvas = document.createElement("canvas");
+  canvas.width = 512;
+  canvas.height = 512;
+
+  const ctx = canvas.getContext("2d");
+  if (!ctx) {
+    return new THREE.Texture();
+  }
+
+  const hue = (index * 29) % 360;
+  const gradient = ctx.createLinearGradient(0, 0, 512, 512);
+  gradient.addColorStop(0, `hsl(${hue}, 78%, 40%)`);
+  gradient.addColorStop(1, `hsl(${(hue + 48) % 360}, 80%, 22%)`);
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, 512, 512);
+
+  ctx.fillStyle = "rgba(255,255,255,0.18)";
+  ctx.beginPath();
+  ctx.arc(390, 130, 120, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.fillStyle = "rgba(255,255,255,0.12)";
+  ctx.beginPath();
+  ctx.arc(130, 390, 150, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillStyle = "#ffffff";
+  ctx.font = "700 64px Geist, sans-serif";
+  ctx.fillText(label, 256, 256, 430);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.anisotropy = 8;
+  texture.needsUpdate = true;
+  return texture;
+}
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 
 const spheres = [...Array(30)].map(() => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
 }));
+
+const stackGroups = [
+  { label: "Languages", value: "Python, R, Bash" },
+  {
+    label: "ML Frameworks",
+    value: "PyTorch, TensorFlow, Scikit-learn, XGBoost",
+  },
+  {
+    label: "Tools",
+    value: "Apache Airflow, MLflow, Docker, Streamlit, HuggingFace, LangChain",
+  },
+  {
+    label: "Data",
+    value: "PySpark, PostgreSQL, MongoDB, Snowflake, Redshift",
+  },
+  { label: "Cloud", value: "AWS (S3, SageMaker, Lambda), GCP, Azure" },
+  {
+    label: "Viz",
+    value: "Power BI, Tableau, Matplotlib, Plotly, Seaborn",
+  },
+];
 
 type SphereProps = {
   vec?: THREE.Vector3;
@@ -152,6 +232,10 @@ const TechStack = () => {
     };
   }, []);
   const materials = useMemo(() => {
+    const textures = sphereLabels.map((label, index) =>
+      createLabelTexture(label, index)
+    );
+
     return textures.map(
       (texture) =>
         new THREE.MeshPhysicalMaterial({
@@ -167,8 +251,20 @@ const TechStack = () => {
   }, []);
 
   return (
-    <div className="techstack">
-      <h2> My Techstack</h2>
+    <div className="techstack" id="tech-stack">
+      <h2>
+        My <span>Techstack</span>
+      </h2>
+
+      <div className="techstack-overlay section-container">
+        <div className="techstack-pill-grid">
+          {stackGroups.map((group) => (
+            <div className="techstack-pill" key={group.label}>
+              <strong>{group.label}:</strong> {group.value}
+            </div>
+          ))}
+        </div>
+      </div>
 
       <Canvas
         shadows
