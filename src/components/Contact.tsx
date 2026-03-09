@@ -15,7 +15,8 @@ const Contact = () => {
               </a>
             </p>
             <h4>Education</h4>
-            <p>MS in Information Science (Machine Learning) – University of Arizona</p>
+            <p>MS in Information Science (Machine Learning) - University of Arizona</p>
+            <p>Bachelors in Mechanical Engineering - Savitribai Phule Pune University</p>
           </div>
           <div className="contact-box">
             <h4>Social</h4>
@@ -34,6 +35,14 @@ const Contact = () => {
               className="contact-social"
             >
               LinkedIn <MdArrowOutward />
+            </a>
+            <a
+              href="https://www.datascienceportfol.io/wasnikh0"
+              target="_blank"
+              data-cursor="disable"
+              className="contact-social"
+            >
+              View Visualization <MdArrowOutward />
             </a>
           </div>
           <div className="contact-box">
