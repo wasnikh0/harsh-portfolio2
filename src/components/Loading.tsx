@@ -79,6 +79,9 @@ export default Loading;
 
 export const setProgress = (setLoading: (value: number) => void) => {
   let percent: number = 0;
+  const isMobile = window.innerWidth <= 1024;
+  const slowTickMs = isMobile ? 800 : 2000;
+  const slowStepMax = isMobile ? 3 : 1;
 
   let interval = setInterval(() => {
     if (percent <= 50) {
@@ -88,12 +91,12 @@ export const setProgress = (setLoading: (value: number) => void) => {
     } else {
       clearInterval(interval);
       interval = setInterval(() => {
-        percent = percent + Math.round(Math.random());
+        percent = percent + Math.round(Math.random() * slowStepMax);
         setLoading(percent);
         if (percent > 91) {
           clearInterval(interval);
         }
-      }, 2000);
+      }, slowTickMs);
     }
   }, 100);
 

@@ -3,6 +3,31 @@ import { DRACOLoader, GLTF, GLTFLoader } from "three-stdlib";
 import { setCharTimeline, setAllTimeline } from "../../utils/GsapScroll";
 import { decryptFile } from "./decrypt";
 
+const MOBILE_BREAKPOINT = 1024;
+
+const isMobileViewport = () => window.innerWidth <= MOBILE_BREAKPOINT;
+
+const compileCharacterShaders = async (
+  renderer: THREE.WebGLRenderer,
+  character: THREE.Object3D,
+  camera: THREE.PerspectiveCamera,
+  scene: THREE.Scene
+) => {
+  if (isMobileViewport()) {
+    return;
+  }
+
+  await Promise.race([
+    renderer.compileAsync(character, camera, scene),
+    new Promise<void>((_, reject) => {
+      window.setTimeout(
+        () => reject(new Error("Shader compile timed out")),
+        8000
+      );
+    }),
+  ]);
+};
+
 const setCharacter = (
   renderer: THREE.WebGLRenderer,
   scene: THREE.Scene,
@@ -27,14 +52,19 @@ const setCharacter = (
           blobUrl,
           async (gltf) => {
             character = gltf.scene;
-            await renderer.compileAsync(character, camera, scene);
+            try {
+              await compileCharacterShaders(renderer, character, camera, scene);
+            } catch (error) {
+              console.warn("Shader precompile skipped:", error);
+            }
             character.traverse((child: any) => {
               if (child.isMesh) {
                 const mesh = child as THREE.Mesh;
+                const mobile = isMobileViewport();
 
                 // Change clothing colors to match site theme
                 if (mesh.material) {
-                  if (mesh.name === "BODY.SHIRT") { // The shirt mesh
+                  if (mesh.name === "BODY.SHIRT") {
                     const newMat = (mesh.material as THREE.Material).clone() as THREE.MeshStandardMaterial;
                     newMat.color = new THREE.Color("#8B4513");
                     mesh.material = newMat;
@@ -45,11 +75,12 @@ const setCharacter = (
                   }
                 }
 
-                child.castShadow = true;
-                child.receiveShadow = true;
+                child.castShadow = !mobile;
+                child.receiveShadow = !mobile;
                 mesh.frustumCulled = true;
               }
             });
+            URL.revokeObjectURL(blobUrl);
             resolve(gltf);
             setCharTimeline(character, camera);
             setAllTimeline();

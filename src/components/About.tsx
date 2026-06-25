@@ -6,22 +6,20 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          Data-driven engineer with a strong foundation in machine learning, data
-          pipelines, and analytics, passionate about turning complex datasets into
-          real business outcomes. Proud graduate of the University of Arizona with a
-          4.0 GPA and a member of the Dean’s Distinguished Scholars List. Industry
-          experience at Tata Communications building AI‑powered systems that are
-          scalable, cloud‑ready, and impact‑focused. I’ve applied ML (LSTM, GNNs,
-          NLP) and data engineering tools (PySpark, Airflow, Snowflake) to reduce
-          churn, boost network traffic for major clients, and deliver over $100K in
-          combined gains.
+          Generative AI engineer and architect operating at a cofounder level with
+          end-to-end ownership of multimodal LLM systems, agentic workflows, and
+          production APIs at an early-stage startup. I design and deploy secure,
+          cost-efficient GenAI stacks (Docker, cloud, internal LLM endpoints) and
+          autonomous agent platforms, covering model lifecycle management,
+          observability, and integration with existing data and application
+          pipelines. I lead the architecture and implementation of the sincerity
+          score platform and autonomous outreach system, making key decisions on
+          tech stack, cloud cost optimization, data strategy, and product
+          reliability while directly supporting paying customers. I function as a
+          founding engineer and Head of AI/ML, combining hands-on Python/SQL/ML
+          work with product thinking, rapid prototyping, and full ownership of
+          Git, CI/CD, and cloud deployments in a lean startup environment.
         </p>
-        <ul className="para">
-          <li><strong>Top Skills:</strong> Python, SQL, Machine Learning, Cloud services</li>
-          <li><strong>Languages:</strong> English (Full Professional), Marathi (Native/Bilingual), Hindi (Native/Bilingual) </li>
-          <li><strong>Certifications:</strong> What is Data Science; Introduction to Business Analytics: Communicating with Data; Data Visualization with Power BI: Storytelling with Data; Analysis for Business Systems</li>
-          <li><strong>Honors & Awards:</strong> Distinguished Scholar; Student Award Nominee; Star Award; Certificate of Excellence</li>
-        </ul>
       </div>
     </div>
   );

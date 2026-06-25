@@ -1,5 +1,50 @@
 import "./styles/Career.css";
 
+const experience = [
+  {
+    role: "Head of AI/ML",
+    company: "Voicera",
+    period: "Feb 2026 – Present",
+    highlights: [
+      "Leading architecture and delivery of Voicera's core multimodal sincerity score engine, an LLM-backed GenAI service that combines audio and video models to quantify speaker credibility, exposed via REST APIs and real-time webhooks for paying customers, including model evaluation, deployment, and monitoring",
+      "Architected and deployed a cost-efficient AI stack in Python on GCP containerizing services with Docker and hosting Ollama as an internal VM-hosted LLM endpoint to avoid external API costs while maintaining control over latency and data privacy",
+      "Built an outreach platform implementing multi-agent AI workflows where sub-agents handle planning, sequencing, content generation, and execution across email and LinkedIn, effectively turning one rep into a small virtual sales team",
+      "Own the full engineering lifecycle of GitHub, CI/CD, backend services, observability, and integration with internal and third-party APIs defining architectural patterns and technical standards for rapid, reliable GenAI feature delivery",
+    ],
+  },
+  {
+    role: "Data Scientist",
+    company: "UGenome",
+    period: "Aug 2025 – Apr 2026",
+    highlights: [
+      "Designed and engineered an internal Customer Data Platform (CDP) in SQL to centralize marketing leads and user records into a scalable, cloud-ready relational database",
+      "Leveraged Databricks fundamentals to design analytics and ML workflows that can run on Azure-integrated data platforms for enterprise customers",
+      "Implemented governance and safety controls for AI services, including prompt and tool management, rate-limiting, logging, and data-handling policies to ensure reliable behavior and auditability for enterprise customers",
+      "Established the foundation for predictive analytics by training Python-based ML models on centralized CDP data to predict churn, retention, and product usage, informing future GenAI and personalization use-cases",
+    ],
+  },
+  {
+    role: "Graduate Assistant: Machine Learning",
+    company: "University of Arizona",
+    period: "Sept 2024 – Aug 2025",
+    highlights: [
+      "Led 40+ students as a Teaching Assistant, managing office hours, resolving blockers in assignments, and coordinating escalations with the professor, similar to a release triage process and incident management for academic deliverables",
+      "Facilitated weekly problem-solving sessions and 1:1 mentoring for 30+ students in Algorithms, resulting in higher assignment completion rates and a 10% increase in course pass rates",
+    ],
+  },
+  {
+    role: "Business and Data Analyst",
+    company: "Tata Communications",
+    period: "Nov 2021 – July 2024",
+    highlights: [
+      "Formed successful relationships with sales, product, and regional leadership to drive LATAM market entry by analyzing telecom demand and competitive pricing across Brazil, Mexico, and Chile, expanding qualified enterprise leads by 40%",
+      "Implemented machine-learning ensemble models (Random Forest, Gradient Boosting) on structured sensor data to detect anomalies and deployed monitoring workflows, enabling proactive interventions that safeguarded product quality",
+      "Created executive-facing Power BI reports and data marts aggregating 500GB of multi-dimensional customer and network data, empowering KPI-driven personalized outreach campaigns and revenue-focused decision-making",
+      "Reported 500+ critical defects during UAT for a financial risk management system, decreased production incidents by 30%",
+    ],
+  },
+];
+
 const Career = () => {
   return (
     <div className="career-section section-container">
@@ -12,63 +57,22 @@ const Career = () => {
           <div className="career-timeline">
             <div className="career-dot"></div>
           </div>
-          <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>Engineer</h4>
-                <h5>UGenome</h5>
+          {experience.map((job) => (
+            <div className="career-info-box" key={`${job.company}-${job.period}`}>
+              <div className="career-info-in">
+                <div className="career-role">
+                  <h4>{job.role}</h4>
+                  <h5>{job.company}</h5>
+                </div>
+                <h3>{job.period}</h3>
               </div>
-              <h3>Aug 2025 – Present</h3>
+              <ul className="career-highlights">
+                {job.highlights.map((highlight) => (
+                  <li key={highlight}>{highlight}</li>
+                ))}
+              </ul>
             </div>
-            <p>
-              Developing scalable data governance systems and AI‑powered solutions as
-              a full‑stack engineer. Leveraging ML models and cloud platforms to drive
-              business ROI and build production‑ready pipelines.
-            </p>
-          </div>
-          <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>Machine Learning Researcher &amp; Graduate Teaching Assistant</h4>
-                <h5>University of Arizona</h5>
-              </div>
-              <h3>Sep 2024 – Aug 2025</h3>
-            </div>
-            <p>
-              Built an NLP grading pipeline reducing manual effort by 40%, led
-              weekly algorithm discussion sessions, and engineered a LangChain-based
-              document app for natural‑language PDF querying. Conducted research in
-              AI systems and taught machine learning topics to graduate students.
-            </p>
-          </div>
-          <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>Engineer / Associate Engineer</h4>
-                <h5>Tata Communications</h5>
-              </div>
-              <h3>Nov 2021 – Jul 2024</h3>
-            </div>
-            <p>
-              Streamlined IoT ingestion pipelines, analyzed telecom datasets to
-              power dashboards, and managed SDLC for enterprise systems, delivering
-              automated insights and supporting high‑volume traffic.
-            </p>
-          </div>
-          <div className="career-info-box">
-            <div className="career-info-in">
-              <div className="career-role">
-                <h4>Implementation Engineer</h4>
-                <h5>Larsen &amp; Toubro</h5>
-              </div>
-              <h3>May 2017 – Jul 2017</h3>
-            </div>
-            <p>
-              Worked on mechanical engineering infrastructure projects, assisting
-              in design, analysis, and quality assurance to optimize manufacturing
-              workflows.
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </div>

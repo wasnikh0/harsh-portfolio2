@@ -155,6 +155,23 @@
   position: relative;
   pointer-events: none;
   z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .character-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .character-model {
+    z-index: 1;
+    bottom: 0;
+  }
 }
 
 .character-hover {

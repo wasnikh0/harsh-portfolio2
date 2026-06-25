@@ -70,7 +70,14 @@ const SocialIcons = () => {
           </a>
         </span>
       </div>
-      <a className="resume-button" href={RESUME_FILE} download>
+      <a
+        className="resume-button"
+        href={RESUME_FILE}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-cursor="disable"
+        aria-label="Open resume"
+      >
         <HoverLinks text="RESUME" />
         <span>
           <TbNotes />
