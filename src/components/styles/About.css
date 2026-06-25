@@ -30,6 +30,24 @@
   letter-spacing: 1px;
 }
 
+.about-me .title,
+.about-me .para {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media only screen and (max-width: 1024px) {
+  .about-section {
+    opacity: 1;
+    min-height: auto;
+    padding: 40px 0 60px;
+  }
+
+  .about-me {
+    transform: none;
+  }
+}
+
 @media only screen and (min-width: 600px) {
   .about-section {
     justify-content: center;
