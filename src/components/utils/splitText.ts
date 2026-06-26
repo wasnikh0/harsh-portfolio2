@@ -12,14 +12,6 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 export default function setSplitText() {
   ScrollTrigger.config({ ignoreMobileResize: true });
-
-  gsap.set([".about-section", ".about-me", ".about-me .title", ".about-me .para"], {
-    autoAlpha: 1,
-    y: 0,
-    rotate: 0,
-    clearProps: "transform",
-  });
-
   if (window.innerWidth < 900) return;
   const paras: NodeListOf<ParaElement> = document.querySelectorAll(".para");
   const titles: NodeListOf<ParaElement> = document.querySelectorAll(".title");
@@ -29,9 +21,6 @@ export default function setSplitText() {
 
   paras.forEach((para: ParaElement) => {
     para.classList.add("visible");
-    if (para.closest(".about-section")) {
-      return;
-    }
     if (para.anim) {
       para.anim.progress(1).kill();
       para.split?.revert();
@@ -60,9 +49,6 @@ export default function setSplitText() {
     );
   });
   titles.forEach((title: ParaElement) => {
-    if (title.closest(".about-section")) {
-      return;
-    }
     if (title.anim) {
       title.anim.progress(1).kill();
       title.split?.revert();
