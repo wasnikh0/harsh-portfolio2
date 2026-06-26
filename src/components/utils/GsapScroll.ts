@@ -66,7 +66,7 @@ export function setCharTimeline(
       tl1
         .fromTo(character.rotation, { y: 0 }, { y: 0.7, duration: 1 }, 0)
         .to(camera.position, { z: 22 }, 0)
-        .fromTo(".character-model", { x: 0 }, { x: "-25%", duration: 1 }, 0)
+        .fromTo(".character-scene", { x: 0 }, { x: "-25%", duration: 1 }, 0)
         .to(".landing-container", { opacity: 0, duration: 0.4 }, 0)
         .to(".landing-container", { y: "40%", duration: 0.8 }, 0);
 
@@ -78,7 +78,7 @@ export function setCharTimeline(
         )
         .to(".about-section", { y: "30%", duration: 6 }, 0)
         .fromTo(
-          ".character-model",
+          ".character-scene",
           { pointerEvents: "inherit" },
           { pointerEvents: "none", x: "-12%", delay: 2, duration: 5 },
           0
@@ -108,7 +108,7 @@ export function setCharTimeline(
 
       tl3
         .fromTo(
-          ".character-model",
+          ".character-scene",
           { y: "0%" },
           { y: "-100%", duration: 4, ease: "none", delay: 1 },
           0
