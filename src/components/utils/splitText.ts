@@ -21,6 +21,9 @@ export default function setSplitText() {
 
   paras.forEach((para: ParaElement) => {
     para.classList.add("visible");
+    if (para.closest(".about-section")) {
+      return;
+    }
     if (para.anim) {
       para.anim.progress(1).kill();
       para.split?.revert();
@@ -49,6 +52,9 @@ export default function setSplitText() {
     );
   });
   titles.forEach((title: ParaElement) => {
+    if (title.closest(".about-section")) {
+      return;
+    }
     if (title.anim) {
       title.anim.progress(1).kill();
       title.split?.revert();
